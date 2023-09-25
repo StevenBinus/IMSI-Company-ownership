@@ -1,0 +1,25 @@
+{
+  "cookies": [
+    {
+      "name": "token",
+      "value": "string",
+      "domain": "localhost",
+      "path": "/",
+      "expires": 1681188346,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "http://localhost:3000",
+      "localStorage": [
+        {
+          "name": "user-storage",
+          "value": "{\"state\":{\"userStore\":{\"company\":1,\"menu\":[{\"title\":\"Master\",\"children\":[{\"title\":\"General\",\"children\":[{\"title\":\"Region\",\"url\":\"/module/general/master/region\"},{\"title\":\"Province\",\"url\":\"/module/general/master/province\"},{\"title\":\"Storage Type\",\"url\":\"/module/general/master/storage-type\"},{\"title\":\"Term Of Payment\",\"url\":\"/module/general/master/term-of-payment\"},{\"title\":\"Company Ownership\",\"url\":\"/module/general/master/company-ownership\"}]},{\"title\":\"Unit\",\"children\":[{\"title\":\"TPT Master\",\"url\":\"/module/unit/master/tpt-master\"}]},{\"title\":\"After Sales\",\"children\":[{\"title\":\"Item\",\"children\":[{\"title\":\"Item Class\",\"url\":\"/module/after-sales/master/item/item-class\"},{\"title\":\"Unit of Measurement\",\"url\":\"/module/after-sales/master/item/unit-of-measurement\"}]}]},{\"title\":\"Finance\",\"children\":[{\"title\":\"Currency Code\",\"url\":\"/module/finance/master/currency-code\"},{\"title\":\"Exchange Rate Type\",\"url\":\"/module/finance/master/exchange-rate-type\"},{\"title\":\"Exchange Rate\",\"url\":\"/module/finance/master/exchange-rate\"},{\"title\":\"General Ledger\",\"children\":[{\"title\":\"Cash Flow Code\",\"url\":\"/module/finance/master/general-ledger/cash-flow-code\"}]}]}]},{\"title\":\"Transaction\",\"children\":[{\"title\":\"Unit\",\"children\":[{\"title\":\"Prospect\",\"url\":\"/module/unit/transaction/prospect\"},{\"title\":\"SPM\",\"url\":\"/module/unit/transaction/spm\"}]}]}],\"module\":\"Master\",\"seed\":0}},\"version\":0}"
+        }
+      ]
+    }
+  ]
+}

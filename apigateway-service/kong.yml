@@ -1,0 +1,47 @@
+_format_version: "2.1"
+
+services:
+- name: testing
+  url: https://api.publicapis.org/entries
+  routes:
+  - name: echo
+    paths:
+    - /echo
+
+- name: general-service
+  url: http://general:8010
+  routes:
+  - name: general-service
+    paths:
+    - /general-service
+
+- name: sales-service
+  url: http://sales:8020
+  routes:
+  - name: sales-service
+    paths:
+    - /sales-service
+
+- name: finance-service
+  url: http://finance:3010
+  routes:
+  - name: finance-service
+    paths:
+    - /finance-service
+
+- name: user-service
+  url: http://user:3000
+  routes:
+  - name: user-service
+    paths:
+    - /user-service
+
+
+    
+plugins:
+- name: rate-limiting
+  service: sales-service
+  config:
+    second: 1000
+    #hour: 10000
+    policy: local

@@ -1,0 +1,2050 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Finance API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8000",
+    "basePath": "/api",
+    "paths": {
+        "/api/transaction/account-receivable-unit/{invoice_unit_system_number}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get Account Receivable Unit By Id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transaction : Account Receivable Unit"
+                ],
+                "summary": "Get Account Receivable Unit By Id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "invoice_unit_system_number",
+                        "name": "invoice_unit_system_number",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/master/bank": {
+            "get": {
+                "description": "REST API Bank",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Bank"
+                ],
+                "summary": "Get Bank All Data",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Page",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort Of: {column}",
+                        "name": "sort_of",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort By: {asc}",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bank Code",
+                        "name": "bank_code",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bank Name",
+                        "name": "bank_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bank Abbreviation",
+                        "name": "bank_abbr",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Is Active",
+                        "name": "is_active",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.ResponsePagination"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/master/bank-branch": {
+            "get": {
+                "description": "REST API Company",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Bank Branch"
+                ],
+                "summary": "Get Bank Branch All Data",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Page",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort Of: {column}",
+                        "name": "sort_of",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort By: {asc}",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bank ID",
+                        "name": "bank_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bank Code",
+                        "name": "bank_code",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bank Branch Code",
+                        "name": "bank_branch_code",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bank Branch Name",
+                        "name": "bank_branch_name",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Is Active",
+                        "name": "is_active",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.ResponsePagination"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/master/bank-branch-change-status": {
+            "patch": {
+                "description": "REST API Bank",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Bank Branch"
+                ],
+                "summary": "Change Status Bank Branch",
+                "parameters": [
+                    {
+                        "description": "Form Request",
+                        "name": "reqBody",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/masterpayloads.ChangeStatusBankBranchRequests"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/master/bank-branch/{Id}": {
+            "get": {
+                "description": "REST API Company",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Bank Branch"
+                ],
+                "summary": "Get Bank Branch By ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "REST API Company",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Bank Branch"
+                ],
+                "summary": "Save Bank Branch",
+                "parameters": [
+                    {
+                        "description": "Form Request",
+                        "name": "reqBody",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/masterpayloads.SaveBankBranchRequests"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/master/bank-change-status": {
+            "patch": {
+                "description": "REST API Bank",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Bank"
+                ],
+                "summary": "Change Status Bank",
+                "parameters": [
+                    {
+                        "description": "Form Request",
+                        "name": "reqBody",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/masterpayloads.ChangeStatusBankRequests"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/master/bank-contact": {
+            "get": {
+                "description": "REST API Company",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Bank Contact"
+                ],
+                "summary": "Get Bank Contact All Data",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Page",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort Of: {column}",
+                        "name": "sort_of",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort By: {asc}",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bank Branch ID",
+                        "name": "bank_branch_id",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/master/bank-contact-change-status": {
+            "patch": {
+                "description": "REST API Bank",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Bank Contact"
+                ],
+                "summary": "Change Status Bank Contact",
+                "parameters": [
+                    {
+                        "description": "Form Request",
+                        "name": "reqBody",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/masterpayloads.ChangeStatusBankContactRequests"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/master/bank-contact/{Id}": {
+            "get": {
+                "description": "REST API Company",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Bank Contact"
+                ],
+                "summary": "Get Bank Contact By ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "REST API Company",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Bank Contact"
+                ],
+                "summary": "Save Bank Contact",
+                "parameters": [
+                    {
+                        "description": "Form Request",
+                        "name": "reqBody",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/masterpayloads.SaveBankContactRequests"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/master/bank/{Id}": {
+            "get": {
+                "description": "REST API Bank",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Bank"
+                ],
+                "summary": "Get Bank By ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "REST API Bank",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Bank"
+                ],
+                "summary": "Save Bank",
+                "parameters": [
+                    {
+                        "description": "Form Request",
+                        "name": "reqBody",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/masterpayloads.SaveBankRequests"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/master/change-exchange-rate-type-status/{exchange_rate_type_id}": {
+            "patch": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Change Exchange Rate Status By Id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Exchange Rate Type"
+                ],
+                "summary": "Change Exchange Rate Status By Id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "exchange_rate_type_id",
+                        "name": "exchange_rate_type_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/master/exchange-rate-type": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get All Exchange Rate Type",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Exchange Rate Type"
+                ],
+                "summary": "Get All Exchange Rate Type",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Page",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort Of: {column}",
+                        "name": "sort_of",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort By: {asc}",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Exchange Rate Type",
+                        "name": "exchange_rate_type",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Description",
+                        "name": "description",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Is Active",
+                        "name": "is_active",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/master/exchange-rate-type-by-id/{exchange_rate_type_id}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get Exchange Rate Type By Id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Exchange Rate Type"
+                ],
+                "summary": "Get Exchange Rate Type By Id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "exchange_rate_type_id",
+                        "name": "exchange_rate_type_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/master/exchange-rate-type-by-name/{exchange_rate_type}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get Exchange Rate Type By Name",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Exchange Rate Type"
+                ],
+                "summary": "Get Exchange Rate Type By Name",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Exchange Rate Type",
+                        "name": "exchange_rate_type",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/master/save-exchange-rate-type": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Save Exchange Rate Type",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Master : Exchange Rate Type"
+                ],
+                "summary": "Save Exchange Rate Type",
+                "parameters": [
+                    {
+                        "description": "Form Request",
+                        "name": "reqBody",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/masterpayloads.SaveExchangeRateTypeRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/transaction/account-receivable-unit": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Get All Account Receivable Unit",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transaction : Account Receivable Unit"
+                ],
+                "summary": "Get All Account Receivable Unit",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Page",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort Of: {column}",
+                        "name": "sort_of",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Sort By: {asc}",
+                        "name": "sort_by",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Company Id",
+                        "name": "company_id",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Brand Id",
+                        "name": "brand_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Invoice Unit Document Number",
+                        "name": "invoice_unit_document_number",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Invoice Date From",
+                        "name": "invoice_date_from",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Invoice Date To",
+                        "name": "invoice_date_to",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Invoice Due Date From",
+                        "name": "invoice_due_date_from",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Invoice Due Date To",
+                        "name": "invoice_due_date_to",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Customer Id",
+                        "name": "customer_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Bill To Customer Id",
+                        "name": "bill_to_customer_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Transaction Type Unit Id",
+                        "name": "transaction_type_account_receviable_unit_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Invoice Status Id",
+                        "name": "invoice_status_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Vehicle Chassis No",
+                        "name": "vehicle_chassis_no",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.ResponsePagination"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/transaction/account-receivable-unit/{invoice_unit_system_number}": {
+            "patch": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Change Status Account Receivable Unit",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transaction : Account Receivable Unit"
+                ],
+                "summary": "Change Status Account Receivable Unit",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "invoice_unit_system_number",
+                        "name": "invoice_unit_system_number",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Form Request",
+                        "name": "reqBody",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/accountreceivablepayloads.UpdateStatusRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/transaction/save-account-receivable-unit": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "description": "Save Account Receivable Unit",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Transaction : Account Receivable Unit"
+                ],
+                "summary": "Save Account Receivable Unit",
+                "parameters": [
+                    {
+                        "description": "Form Request",
+                        "name": "reqBody",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/accountreceivablepayloads.SaveHeaderRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/payloads.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/exceptions.Error"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "accountreceivablepayloads.SaveHeaderRequest": {
+            "type": "object",
+            "properties": {
+                "account_receivable_invoice_type_id": {
+                    "type": "integer"
+                },
+                "bill_code_id": {
+                    "type": "integer"
+                },
+                "bill_to_address_id": {
+                    "type": "integer"
+                },
+                "bill_to_address_street_line_1": {
+                    "type": "string"
+                },
+                "bill_to_address_street_line_2": {
+                    "type": "string"
+                },
+                "bill_to_address_street_line_3": {
+                    "type": "string"
+                },
+                "bill_to_customer_id": {
+                    "type": "integer"
+                },
+                "bill_to_fax_no": {
+                    "type": "string"
+                },
+                "bill_to_id_no": {
+                    "type": "string"
+                },
+                "bill_to_name": {
+                    "type": "string"
+                },
+                "bill_to_phone_no": {
+                    "type": "string"
+                },
+                "bill_to_tax_registration_date": {
+                    "type": "string"
+                },
+                "bill_to_tax_registration_number": {
+                    "type": "string"
+                },
+                "bill_to_title_prefix": {
+                    "type": "string"
+                },
+                "bill_to_title_suffix": {
+                    "type": "string"
+                },
+                "bill_to_type_id": {
+                    "type": "integer"
+                },
+                "billable_to_id": {
+                    "type": "integer"
+                },
+                "brand_id": {
+                    "type": "integer"
+                },
+                "company_id": {
+                    "type": "integer"
+                },
+                "cost_center_id": {
+                    "type": "integer"
+                },
+                "customer_id": {
+                    "type": "integer"
+                },
+                "event_id": {
+                    "type": "integer"
+                },
+                "fund_type_id": {
+                    "type": "integer"
+                },
+                "invoice_date": {
+                    "type": "string"
+                },
+                "invoice_due_date": {
+                    "type": "string"
+                },
+                "invoice_status_id": {
+                    "type": "integer"
+                },
+                "invoice_unit_system_number": {
+                    "type": "integer"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "leasing_supplier_id": {
+                    "type": "integer"
+                },
+                "payment_type_id": {
+                    "type": "integer"
+                },
+                "pkp_date": {
+                    "type": "string"
+                },
+                "pkp_number": {
+                    "type": "string"
+                },
+                "pkp_type": {
+                    "type": "string"
+                },
+                "profit_center_id": {
+                    "type": "integer"
+                },
+                "purchase_order_system_number": {
+                    "type": "integer"
+                },
+                "remark": {
+                    "type": "string"
+                },
+                "tax_address_id": {
+                    "type": "integer"
+                },
+                "tax_address_street_line_1": {
+                    "type": "string"
+                },
+                "tax_address_street_line_2": {
+                    "type": "string"
+                },
+                "tax_address_street_line_3": {
+                    "type": "string"
+                },
+                "tax_industry_document_date": {
+                    "type": "string"
+                },
+                "tax_industry_document_number": {
+                    "type": "string"
+                },
+                "tax_invoice_type_id": {
+                    "type": "integer"
+                },
+                "tax_name": {
+                    "type": "string"
+                },
+                "top_id": {
+                    "type": "integer"
+                },
+                "transaction_type_account_receviable_unit_id": {
+                    "type": "integer"
+                },
+                "vat_transaction_id": {
+                    "type": "integer"
+                }
+            }
+        },
+        "accountreceivablepayloads.UpdateStatusRequest": {
+            "type": "object",
+            "properties": {
+                "is_active": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "exceptions.Error": {
+            "type": "object",
+            "properties": {
+                "Data": {},
+                "Message": {
+                    "type": "string"
+                },
+                "Success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "masterpayloads.ChangeStatusBankBranchRequests": {
+            "type": "object",
+            "properties": {
+                "bank_id": {
+                    "type": "integer"
+                },
+                "is_active": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "masterpayloads.ChangeStatusBankContactRequests": {
+            "type": "object",
+            "properties": {
+                "bank_contact_id": {
+                    "type": "integer"
+                },
+                "is_active": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "masterpayloads.ChangeStatusBankRequests": {
+            "type": "object",
+            "properties": {
+                "bank_id": {
+                    "type": "integer"
+                },
+                "is_active": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "masterpayloads.SaveBankBranchRequests": {
+            "type": "object",
+            "properties": {
+                "address_id": {
+                    "type": "integer"
+                },
+                "bank_branch_code": {
+                    "type": "string"
+                },
+                "bank_branch_id": {
+                    "type": "integer"
+                },
+                "bank_branch_name": {
+                    "type": "string"
+                },
+                "bank_id": {
+                    "type": "integer"
+                },
+                "is_active": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "masterpayloads.SaveBankContactRequests": {
+            "type": "object",
+            "properties": {
+                "bank_branch_id": {
+                    "type": "integer"
+                },
+                "bank_contact_id": {
+                    "type": "integer"
+                },
+                "contact_name": {
+                    "type": "string"
+                },
+                "contact_phone": {
+                    "type": "string"
+                },
+                "contact_posiion": {
+                    "type": "string"
+                },
+                "is_active": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "masterpayloads.SaveBankRequests": {
+            "type": "object",
+            "properties": {
+                "bank_abbr": {
+                    "type": "string"
+                },
+                "bank_code": {
+                    "type": "string"
+                },
+                "bank_id": {
+                    "type": "integer"
+                },
+                "bank_name": {
+                    "type": "string"
+                },
+                "is_active": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "masterpayloads.SaveExchangeRateTypeRequest": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "exchange_rate_type": {
+                    "type": "string"
+                },
+                "exchange_rate_type_id": {
+                    "type": "integer"
+                },
+                "is_active": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "payloads.Response": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "message": {
+                    "type": "string"
+                },
+                "status_code": {
+                    "type": "integer"
+                }
+            }
+        },
+        "payloads.ResponsePagination": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "message": {
+                    "type": "string"
+                },
+                "page": {
+                    "type": "integer"
+                },
+                "page_limit": {
+                    "type": "integer"
+                },
+                "status_code": {
+                    "type": "integer"
+                },
+                "total_pages": {
+                    "type": "integer"
+                },
+                "total_rows": {
+                    "type": "integer"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "Header"
+        }
+    }
+}

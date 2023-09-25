@@ -1,0 +1,9 @@
+config:
+  target: 'http://127.0.0.1:8000' # URL of the service you want to test
+  phases:
+    - duration: 300 # Duration of the test in seconds
+      arrivalRate: 20 # Number of new virtual users to start per second
+scenarios:
+  - flow:
+      - get:
+          url: '/api/sales/prospect?page=0&limit=10' # Path of the API endpoint

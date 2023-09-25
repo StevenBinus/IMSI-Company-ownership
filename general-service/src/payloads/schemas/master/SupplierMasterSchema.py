@@ -1,0 +1,46 @@
+from pydantic import BaseModel
+from typing import List, Optional
+
+class MtrSupplierResponse(BaseModel):
+    company_id: int
+    is_active: bool
+    effective_date: Optional[str]
+    supplier_id: int
+    supplier_code: str
+    supplier_title_prefix: Optional[str]
+    supplier_name: str
+    supplier_title_suffix: Optional[str]
+    supplier_type_id: int
+    term_of_payment_id: int
+    default_currency_id: Optional[int]
+    via_binning: Optional[bool]
+    is_import_supplier: Optional[bool]
+    supplier_invoice_type_id: Optional[int]
+    supplier_unique_id: str
+    supplier_address_id: int
+    supplier_phone_no: Optional[str]
+    supplier_fax_no: Optional[str]
+    supplier_mobile_phone: str
+    supplier_email_address: Optional[str]
+    minimum_down_payment: Optional[int]
+    supplier_behaviour_id: Optional[int]
+    supplier_class_id: Optional[int]
+    vat_npwp_no: str
+    vat_npwp_date: str
+    vat_pkp_type: str
+    vat_pkp_no: Optional[str]
+    vat_pkp_date: Optional[str]
+    vat_transaction_id: Optional[int]
+    vat_name: str
+    vat_address_id: int
+    vat_tax_office: Optional[int]
+    tax_npwp_no: str
+    tax_npwp_date: str
+    tax_pkp_type: str
+    tax_pkp_no: Optional[str]
+    tax_pkp_date: Optional[str]
+    tax_name: str
+    tax_address_id: int
+    tax_tax_office_id: Optional[int]
+    supplier_pic: list
+    supplier_bank_account: list

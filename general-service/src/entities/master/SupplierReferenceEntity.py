@@ -1,0 +1,62 @@
+from sqlalchemy import String,Column,Float,Integer, Boolean, ForeignKey, DateTime, CHAR
+from sqlalchemy.orm import relationship
+from src.configs.database import Base
+
+class MtrSupplierReferenceEntity(Base):
+    __tablename__= "mtr_supplier_reference"
+    supplier_status = Column(CHAR(2),nullable=True,default=10)
+    supplier_reference_id = Column(Integer,nullable=False,primary_key=True,autoincrement=True)
+    supplier_code = Column(String(10),nullable=True)
+    supplier_name = Column(String(100),nullable=False)
+    supplier_type_id = Column(Integer,ForeignKey("mtr_supplier_type.supplier_type_id"),nullable=True,default=None)
+    supplier_class = Column(String(10),nullable=False)
+    supplier_title_prefix = Column(String(15),nullable=True)
+    supplier_title_suffix=Column(String(15),nullable=True)
+    supplier_address_id=Column(Integer,ForeignKey("mtr_address.address_id"),nullable=True,default=None)
+    supplier_phone_number=Column(String(30),nullable=False)
+    supplier_fax_number = Column(String(30),nullable=False)
+    supplier_mobile_phone = Column(String(30),nullable=False)
+    supplier_email_address = Column(String(128),nullable=False)
+    supplier_behaviour_id=Column(Integer,ForeignKey("mtr_behaviour.behaviour_id"),nullable=True,default=None)
+    term_of_payment_id = Column(Integer,ForeignKey("mtr_term_of_payment.term_of_payment_id"),nullable=True,default=None)
+    minimum_down_payment=Column(Float,nullable=False)
+    via_binning=Column(Boolean,nullable=False)
+    old_supplier_code=Column(String(10),nullable=True)
+    business_group_id=Column(Integer,ForeignKey("mtr_business_group.business_group_id"),nullable=True,default=None)
+    supplier_unique_code=Column(String(50),nullable=False)
+    company_id=Column(Integer,ForeignKey("mtr_company.company_id"),nullable=True,default=None)
+    vat_npwp_no=Column(String(30),nullable=False)
+    vat_npwp_date=Column(DateTime,nullable=False)
+    vat_name = Column(String(100),nullable=False)
+    vat_address_id=Column(Integer,ForeignKey("mtr_address.address_id"),nullable=True,default=None)
+    vat_pkp_type = Column(CHAR(1),nullable=False)
+    vat_pkp_no=Column(String(30),nullable=False)
+    vat_tax_service_office_id=Column(Integer,ForeignKey("mtr_tax_service_office.tax_service_office_id"),nullable=True,default=None)
+    vat_transaction_id=Column(Integer,ForeignKey("mtr_vat_transaction_code.vat_transaction_code_id"),nullable=True,default=None)
+    tax_npwp_no=Column(String(30),nullable=False)
+    tax_name = Column(String(100),nullable=False)
+    tax_address_id=Column(Integer,ForeignKey("mtr_address.address_id"),nullable=True,default=None)
+    tax_pkp_no=Column(String(30),nullable=False)
+    tax_pkp_date = Column(DateTime,nullable=False)
+    tax_pkp_type=Column(Boolean,nullable=False)
+    tax_tax_service_office_id=Column(Integer,ForeignKey("mtr_tax_service_office.tax_service_office_id"),nullable=True,default=None)
+    vat_pkp_date=Column(DateTime,nullable=False)
+    tax_npwp_date=Column(DateTime,nullable=False)
+
+
+    #back populates
+    supplier_type_reference=relationship("MtrSupplierType",back_populates="reference_supplier_type",foreign_keys=[supplier_type_id])
+    address_reference=relationship("MtrAddress",back_populates="reference_address",foreign_keys=[supplier_address_id])
+    address_reference_vat = relationship("MtrAddress",back_populates="reference_vat_address",foreign_keys=[vat_address_id])
+    address_reference_tax = relationship("MtrAddress",back_populates="reference_tax_address",foreign_keys=[tax_address_id])
+    behaviour_reference = relationship("MtrBehaviour",back_populates="behaviour_reference",foreign_keys=[supplier_behaviour_id])
+    term_of_payment_reference=relationship("MtrTermOfPayment",back_populates="reference_term_of_payment",foreign_keys=[term_of_payment_id])
+    business_group_reference = relationship("MtrBusinessGroup",back_populates="reference_business_group",foreign_keys=[business_group_id])
+    company_reference=relationship("MtrCompany",back_populates="reference_company",foreign_keys=[company_id])
+    address_vat_office = relationship("MtrTaxServiceOffice",back_populates="vat_office_address",foreign_keys=[vat_tax_service_office_id])
+    address_tax_office = relationship("MtrTaxServiceOffice",back_populates="tax_office_address",foreign_keys=[tax_tax_service_office_id])
+    supplier_reference_vat=relationship("MtrVATTransactionCode",back_populates="vat_supply_reference",foreign_keys=[vat_transaction_id])
+    reference_pic_reference = relationship("MtrSupplierReferencePic",back_populates="supplier_reference_pic_reference",foreign_keys="MtrSupplierReferencePic.supplier_reference_id")
+    bank_reference_supplier_reference=relationship("MtrSupplierReferenceBankReference",back_populates="supplier_reference_bank_reference",foreign_keys="MtrSupplierReferenceBankReference.supplier_reference_id")
+
+    

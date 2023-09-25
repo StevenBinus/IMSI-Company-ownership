@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sales-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sales-service
+  template:
+    metadata:
+      labels:
+        app: sales-service
+    spec:
+      containers:
+      - name: sales-service
+        image: richardoalvin/sales-service:v1.3
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8000
+      restartPolicy: Always

@@ -1,0 +1,1345 @@
+basePath: /api
+definitions:
+  accountreceivablepayloads.SaveHeaderRequest:
+    properties:
+      account_receivable_invoice_type_id:
+        type: integer
+      bill_code_id:
+        type: integer
+      bill_to_address_id:
+        type: integer
+      bill_to_address_street_line_1:
+        type: string
+      bill_to_address_street_line_2:
+        type: string
+      bill_to_address_street_line_3:
+        type: string
+      bill_to_customer_id:
+        type: integer
+      bill_to_fax_no:
+        type: string
+      bill_to_id_no:
+        type: string
+      bill_to_name:
+        type: string
+      bill_to_phone_no:
+        type: string
+      bill_to_tax_registration_date:
+        type: string
+      bill_to_tax_registration_number:
+        type: string
+      bill_to_title_prefix:
+        type: string
+      bill_to_title_suffix:
+        type: string
+      bill_to_type_id:
+        type: integer
+      billable_to_id:
+        type: integer
+      brand_id:
+        type: integer
+      company_id:
+        type: integer
+      cost_center_id:
+        type: integer
+      customer_id:
+        type: integer
+      event_id:
+        type: integer
+      fund_type_id:
+        type: integer
+      invoice_date:
+        type: string
+      invoice_due_date:
+        type: string
+      invoice_status_id:
+        type: integer
+      invoice_unit_system_number:
+        type: integer
+      is_active:
+        type: boolean
+      leasing_supplier_id:
+        type: integer
+      payment_type_id:
+        type: integer
+      pkp_date:
+        type: string
+      pkp_number:
+        type: string
+      pkp_type:
+        type: string
+      profit_center_id:
+        type: integer
+      purchase_order_system_number:
+        type: integer
+      remark:
+        type: string
+      tax_address_id:
+        type: integer
+      tax_address_street_line_1:
+        type: string
+      tax_address_street_line_2:
+        type: string
+      tax_address_street_line_3:
+        type: string
+      tax_industry_document_date:
+        type: string
+      tax_industry_document_number:
+        type: string
+      tax_invoice_type_id:
+        type: integer
+      tax_name:
+        type: string
+      top_id:
+        type: integer
+      transaction_type_account_receviable_unit_id:
+        type: integer
+      vat_transaction_id:
+        type: integer
+    type: object
+  accountreceivablepayloads.UpdateStatusRequest:
+    properties:
+      is_active:
+        type: boolean
+    type: object
+  exceptions.Error:
+    properties:
+      Data: {}
+      Message:
+        type: string
+      Success:
+        type: boolean
+    type: object
+  masterpayloads.ChangeStatusBankBranchRequests:
+    properties:
+      bank_id:
+        type: integer
+      is_active:
+        type: boolean
+    type: object
+  masterpayloads.ChangeStatusBankContactRequests:
+    properties:
+      bank_contact_id:
+        type: integer
+      is_active:
+        type: boolean
+    type: object
+  masterpayloads.ChangeStatusBankRequests:
+    properties:
+      bank_id:
+        type: integer
+      is_active:
+        type: boolean
+    type: object
+  masterpayloads.SaveBankBranchRequests:
+    properties:
+      address_id:
+        type: integer
+      bank_branch_code:
+        type: string
+      bank_branch_id:
+        type: integer
+      bank_branch_name:
+        type: string
+      bank_id:
+        type: integer
+      is_active:
+        type: boolean
+    type: object
+  masterpayloads.SaveBankContactRequests:
+    properties:
+      bank_branch_id:
+        type: integer
+      bank_contact_id:
+        type: integer
+      contact_name:
+        type: string
+      contact_phone:
+        type: string
+      contact_posiion:
+        type: string
+      is_active:
+        type: boolean
+    type: object
+  masterpayloads.SaveBankRequests:
+    properties:
+      bank_abbr:
+        type: string
+      bank_code:
+        type: string
+      bank_id:
+        type: integer
+      bank_name:
+        type: string
+      is_active:
+        type: boolean
+    type: object
+  masterpayloads.SaveExchangeRateTypeRequest:
+    properties:
+      description:
+        type: string
+      exchange_rate_type:
+        type: string
+      exchange_rate_type_id:
+        type: integer
+      is_active:
+        type: boolean
+    type: object
+  payloads.Response:
+    properties:
+      data: {}
+      message:
+        type: string
+      status_code:
+        type: integer
+    type: object
+  payloads.ResponsePagination:
+    properties:
+      data: {}
+      message:
+        type: string
+      page:
+        type: integer
+      page_limit:
+        type: integer
+      status_code:
+        type: integer
+      total_pages:
+        type: integer
+      total_rows:
+        type: integer
+    type: object
+host: localhost:8000
+info:
+  contact: {}
+  title: Finance API
+  version: "1.0"
+paths:
+  /api/transaction/account-receivable-unit/{invoice_unit_system_number}:
+    get:
+      consumes:
+      - application/json
+      description: Get Account Receivable Unit By Id
+      parameters:
+      - description: invoice_unit_system_number
+        in: path
+        name: invoice_unit_system_number
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      security:
+      - BearerAuth: []
+      summary: Get Account Receivable Unit By Id
+      tags:
+      - 'Transaction : Account Receivable Unit'
+  /master/bank:
+    get:
+      consumes:
+      - application/json
+      description: REST API Bank
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: Page
+        in: query
+        name: page
+        required: true
+        type: string
+      - description: 'Sort Of: {column}'
+        in: query
+        name: sort_of
+        type: string
+      - description: 'Sort By: {asc}'
+        in: query
+        name: sort_by
+        type: string
+      - description: Bank Code
+        in: query
+        name: bank_code
+        type: string
+      - description: Bank Name
+        in: query
+        name: bank_name
+        type: string
+      - description: Bank Abbreviation
+        in: query
+        name: bank_abbr
+        type: string
+      - description: Is Active
+        in: query
+        name: is_active
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.ResponsePagination'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get Bank All Data
+      tags:
+      - 'Master : Bank'
+  /master/bank-branch:
+    get:
+      consumes:
+      - application/json
+      description: REST API Company
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: Page
+        in: query
+        name: page
+        required: true
+        type: string
+      - description: 'Sort Of: {column}'
+        in: query
+        name: sort_of
+        type: string
+      - description: 'Sort By: {asc}'
+        in: query
+        name: sort_by
+        type: string
+      - description: Bank ID
+        in: query
+        name: bank_id
+        type: string
+      - description: Bank Code
+        in: query
+        name: bank_code
+        type: string
+      - description: Bank Branch Code
+        in: query
+        name: bank_branch_code
+        type: string
+      - description: Bank Branch Name
+        in: query
+        name: bank_branch_name
+        type: string
+      - description: Is Active
+        in: query
+        name: is_active
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.ResponsePagination'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get Bank Branch All Data
+      tags:
+      - 'Master : Bank Branch'
+  /master/bank-branch-change-status:
+    patch:
+      consumes:
+      - application/json
+      description: REST API Bank
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/masterpayloads.ChangeStatusBankBranchRequests'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Change Status Bank Branch
+      tags:
+      - 'Master : Bank Branch'
+  /master/bank-branch/{Id}:
+    get:
+      consumes:
+      - application/json
+      description: REST API Company
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get Bank Branch By ID
+      tags:
+      - 'Master : Bank Branch'
+    post:
+      consumes:
+      - application/json
+      description: REST API Company
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/masterpayloads.SaveBankBranchRequests'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Save Bank Branch
+      tags:
+      - 'Master : Bank Branch'
+  /master/bank-change-status:
+    patch:
+      consumes:
+      - application/json
+      description: REST API Bank
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/masterpayloads.ChangeStatusBankRequests'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Change Status Bank
+      tags:
+      - 'Master : Bank'
+  /master/bank-contact:
+    get:
+      consumes:
+      - application/json
+      description: REST API Company
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: Page
+        in: query
+        name: page
+        required: true
+        type: string
+      - description: 'Sort Of: {column}'
+        in: query
+        name: sort_of
+        type: string
+      - description: 'Sort By: {asc}'
+        in: query
+        name: sort_by
+        type: string
+      - description: Bank Branch ID
+        in: query
+        name: bank_branch_id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get Bank Contact All Data
+      tags:
+      - 'Master : Bank Contact'
+  /master/bank-contact-change-status:
+    patch:
+      consumes:
+      - application/json
+      description: REST API Bank
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/masterpayloads.ChangeStatusBankContactRequests'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Change Status Bank Contact
+      tags:
+      - 'Master : Bank Contact'
+  /master/bank-contact/{Id}:
+    get:
+      consumes:
+      - application/json
+      description: REST API Company
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get Bank Contact By ID
+      tags:
+      - 'Master : Bank Contact'
+    post:
+      consumes:
+      - application/json
+      description: REST API Company
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/masterpayloads.SaveBankContactRequests'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Save Bank Contact
+      tags:
+      - 'Master : Bank Contact'
+  /master/bank/{Id}:
+    get:
+      consumes:
+      - application/json
+      description: REST API Bank
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get Bank By ID
+      tags:
+      - 'Master : Bank'
+    post:
+      consumes:
+      - application/json
+      description: REST API Bank
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/masterpayloads.SaveBankRequests'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Save Bank
+      tags:
+      - 'Master : Bank'
+  /master/change-exchange-rate-type-status/{exchange_rate_type_id}:
+    patch:
+      consumes:
+      - application/json
+      description: Change Exchange Rate Status By Id
+      parameters:
+      - description: exchange_rate_type_id
+        in: path
+        name: exchange_rate_type_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      security:
+      - BearerAuth: []
+      summary: Change Exchange Rate Status By Id
+      tags:
+      - 'Master : Exchange Rate Type'
+  /master/exchange-rate-type:
+    get:
+      consumes:
+      - application/json
+      description: Get All Exchange Rate Type
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: Page
+        in: query
+        name: page
+        required: true
+        type: string
+      - description: 'Sort Of: {column}'
+        in: query
+        name: sort_of
+        type: string
+      - description: 'Sort By: {asc}'
+        in: query
+        name: sort_by
+        type: string
+      - description: Exchange Rate Type
+        in: query
+        name: exchange_rate_type
+        type: string
+      - description: Description
+        in: query
+        name: description
+        type: string
+      - description: Is Active
+        in: query
+        name: is_active
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      security:
+      - BearerAuth: []
+      summary: Get All Exchange Rate Type
+      tags:
+      - 'Master : Exchange Rate Type'
+  /master/exchange-rate-type-by-id/{exchange_rate_type_id}:
+    get:
+      consumes:
+      - application/json
+      description: Get Exchange Rate Type By Id
+      parameters:
+      - description: exchange_rate_type_id
+        in: path
+        name: exchange_rate_type_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      security:
+      - BearerAuth: []
+      summary: Get Exchange Rate Type By Id
+      tags:
+      - 'Master : Exchange Rate Type'
+  /master/exchange-rate-type-by-name/{exchange_rate_type}:
+    get:
+      consumes:
+      - application/json
+      description: Get Exchange Rate Type By Name
+      parameters:
+      - description: Exchange Rate Type
+        in: query
+        name: exchange_rate_type
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      security:
+      - BearerAuth: []
+      summary: Get Exchange Rate Type By Name
+      tags:
+      - 'Master : Exchange Rate Type'
+  /master/save-exchange-rate-type:
+    post:
+      consumes:
+      - application/json
+      description: Save Exchange Rate Type
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/masterpayloads.SaveExchangeRateTypeRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      security:
+      - BearerAuth: []
+      summary: Save Exchange Rate Type
+      tags:
+      - 'Master : Exchange Rate Type'
+  /transaction/account-receivable-unit:
+    get:
+      consumes:
+      - application/json
+      description: Get All Account Receivable Unit
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: Page
+        in: query
+        name: page
+        required: true
+        type: string
+      - description: 'Sort Of: {column}'
+        in: query
+        name: sort_of
+        type: string
+      - description: 'Sort By: {asc}'
+        in: query
+        name: sort_by
+        type: string
+      - description: Company Id
+        in: query
+        name: company_id
+        required: true
+        type: string
+      - description: Brand Id
+        in: query
+        name: brand_id
+        type: string
+      - description: Invoice Unit Document Number
+        in: query
+        name: invoice_unit_document_number
+        type: string
+      - description: Invoice Date From
+        in: query
+        name: invoice_date_from
+        type: string
+      - description: Invoice Date To
+        in: query
+        name: invoice_date_to
+        type: string
+      - description: Invoice Due Date From
+        in: query
+        name: invoice_due_date_from
+        type: string
+      - description: Invoice Due Date To
+        in: query
+        name: invoice_due_date_to
+        type: string
+      - description: Customer Id
+        in: query
+        name: customer_id
+        type: string
+      - description: Bill To Customer Id
+        in: query
+        name: bill_to_customer_id
+        type: string
+      - description: Transaction Type Unit Id
+        in: query
+        name: transaction_type_account_receviable_unit_id
+        type: string
+      - description: Invoice Status Id
+        in: query
+        name: invoice_status_id
+        type: string
+      - description: Vehicle Chassis No
+        in: query
+        name: vehicle_chassis_no
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.ResponsePagination'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      security:
+      - BearerAuth: []
+      summary: Get All Account Receivable Unit
+      tags:
+      - 'Transaction : Account Receivable Unit'
+  /transaction/account-receivable-unit/{invoice_unit_system_number}:
+    patch:
+      consumes:
+      - application/json
+      description: Change Status Account Receivable Unit
+      parameters:
+      - description: invoice_unit_system_number
+        in: path
+        name: invoice_unit_system_number
+        required: true
+        type: string
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/accountreceivablepayloads.UpdateStatusRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      security:
+      - BearerAuth: []
+      summary: Change Status Account Receivable Unit
+      tags:
+      - 'Transaction : Account Receivable Unit'
+  /transaction/save-account-receivable-unit:
+    post:
+      consumes:
+      - application/json
+      description: Save Account Receivable Unit
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/accountreceivablepayloads.SaveHeaderRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      security:
+      - BearerAuth: []
+      summary: Save Account Receivable Unit
+      tags:
+      - 'Transaction : Account Receivable Unit'
+securityDefinitions:
+  BearerAuth:
+    in: Header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

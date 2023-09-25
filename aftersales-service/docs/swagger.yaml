@@ -1,0 +1,998 @@
+definitions:
+  exceptions.Error:
+    properties:
+      Data: {}
+      Message:
+        type: string
+      Success:
+        type: boolean
+    type: object
+  masterpayloads.OperationGroupHeader:
+    properties:
+      is_active:
+        type: boolean
+      operation_group_code:
+        type: string
+      operation_group_description:
+        type: string
+      operation_group_id:
+        type: integer
+    type: object
+  masterpayloads.OperationSectionRequest:
+    properties:
+      is_active:
+        type: boolean
+      operation_group_id:
+        type: integer
+      operation_section_code:
+        type: string
+      operation_section_description:
+        type: string
+      operation_section_id:
+        type: integer
+    type: object
+  masterpayloads.SaveBookingEstimationRequest:
+    properties:
+      agreement_id:
+        type: integer
+      agreement_number_br:
+        type: string
+      batch_system_number:
+        type: integer
+      booking_estimation_batch_date:
+        type: string
+      booking_estimation_vehicle_number:
+        type: string
+      booking_system_number:
+        type: integer
+      brand_id:
+        type: integer
+      campaign_id:
+        type: integer
+      company_id:
+        type: integer
+      contact_person_mobile:
+        type: string
+      contact_person_name:
+        type: string
+      contact_person_phone:
+        type: string
+      contact_person_via:
+        type: string
+      contract_system_number:
+        type: integer
+      customer_id:
+        type: integer
+      dealer_representative_id:
+        type: integer
+      document_status_id:
+        type: integer
+      estimation_system_number:
+        type: integer
+      insurance_claim_no:
+        type: string
+      insurance_expired_date:
+        type: string
+      insurance_pic:
+        type: string
+      insurance_policy_no:
+        type: string
+      is_unregistered:
+        type: string
+      model_id:
+        type: integer
+      pdi_system_number:
+        type: integer
+      profit_center_id:
+        type: integer
+      system_request_system_number:
+        type: integer
+      variant_id:
+        type: integer
+      vehicle_id:
+        type: integer
+    type: object
+  payloads.Response:
+    properties:
+      data: {}
+      message:
+        type: string
+      status_code:
+        type: integer
+    type: object
+info:
+  contact: {}
+  title: Aftersales API
+  version: "1.0"
+paths:
+  /api/master/item/{item_code}:
+    get:
+      consumes:
+      - application/json
+      description: REST API Item
+      parameters:
+      - description: item_code
+        in: path
+        name: item_code
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get Item By code
+      tags:
+      - Item
+  /api/master/item/get-lookup:
+    get:
+      consumes:
+      - application/json
+      description: REST API Item
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: Page
+        in: query
+        name: page
+        required: true
+        type: string
+      - description: sort_of
+        in: query
+        name: sort_of
+        type: string
+      - description: sort_by
+        in: query
+        name: sort_by
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get Item By Lookup
+      tags:
+      - Item
+  /api/master/operation-code/{operation_id}:
+    get:
+      consumes:
+      - application/json
+      description: REST API Operation Code
+      parameters:
+      - description: operation_id
+        in: path
+        name: operation_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get Operation Code By ID
+      tags:
+      - Operation Code
+  /api/master/operation-entries/{operation_entries_id}:
+    get:
+      consumes:
+      - application/json
+      description: REST API Operation Entries
+      parameters:
+      - description: operation_entries_id
+        in: path
+        name: operation_entries_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get Operation Entries By ID
+      tags:
+      - Operation Entries
+  /api/master/operation-group:
+    get:
+      consumes:
+      - application/json
+      description: REST API Operation Group
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: Page
+        in: query
+        name: page
+        required: true
+        type: string
+      - description: operation_group_code
+        in: query
+        name: operation_group_code
+        type: string
+      - description: operation_group_description
+        in: query
+        name: operation_group_description
+        type: string
+      - description: is_active
+        enum:
+        - "true"
+        - "false"
+        in: query
+        name: is_active
+        type: string
+      - description: sort_of
+        in: query
+        name: sort_of
+        type: string
+      - description: sort_by
+        in: query
+        name: sort_by
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get All Operation Group
+      tags:
+      - Operation Group
+  /api/master/operation-group/:
+    post:
+      consumes:
+      - application/json
+      description: REST API Operation Group
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/masterpayloads.OperationGroupHeader'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Save Operation Group
+      tags:
+      - Operation Group
+  /api/master/operation-group/{operation_group_code}:
+    get:
+      consumes:
+      - application/json
+      description: REST API Operation Group
+      parameters:
+      - description: operation_group_code
+        in: path
+        name: operation_group_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get Operation Group By Code
+      tags:
+      - Operation Group
+  /api/master/operation-group/{operation_group_id}:
+    patch:
+      consumes:
+      - application/json
+      description: REST API Operation Group
+      parameters:
+      - description: operation_group_id
+        in: path
+        name: operation_group_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Change Status Operation Group
+      tags:
+      - Operation Group
+  /api/master/operation-group/drop-down:
+    get:
+      consumes:
+      - application/json
+      description: REST API Operation Group
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get All Operation Group Is Active
+      tags:
+      - Operation Group
+  /api/master/operation-key/{operation_key_id}:
+    get:
+      consumes:
+      - application/json
+      description: REST API Operation Key
+      parameters:
+      - description: operation_key_id
+        in: path
+        name: operation_key_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get Operation Key By ID
+      tags:
+      - Operation Key
+  /api/master/operation-model-mapping/{operation_model_mapping_id}:
+    get:
+      consumes:
+      - application/json
+      description: REST API Operation Model Mapping
+      parameters:
+      - description: operation_model_mapping_id
+        in: path
+        name: operation_model_mapping_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get Operation Model Mapping By ID
+      tags:
+      - Operation Model Mapping
+  /api/master/operation-section:
+    get:
+      consumes:
+      - application/json
+      description: REST API Operation Section
+      parameters:
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: string
+      - description: Page
+        in: query
+        name: page
+        required: true
+        type: string
+      - description: operation_section_code
+        in: query
+        name: operation_section_code
+        type: string
+      - description: operation_section_description
+        in: query
+        name: operation_section_description
+        type: string
+      - description: operation_group_code
+        in: query
+        name: operation_group_code
+        type: string
+      - description: operation_group_description
+        in: query
+        name: operation_group_description
+        type: string
+      - description: is_active
+        enum:
+        - "true"
+        - "false"
+        in: query
+        name: is_active
+        type: string
+      - description: sort_of
+        in: query
+        name: sort_of
+        type: string
+      - description: sort_by
+        in: query
+        name: sort_by
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get All Operation Section
+      tags:
+      - Operation Section
+  /api/master/operation-section/:
+    put:
+      consumes:
+      - application/json
+      description: REST API Operation Section
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/masterpayloads.OperationSectionRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Save Operation Section
+      tags:
+      - Operation Section
+  /api/master/operation-section/{operation_section_id}:
+    get:
+      consumes:
+      - application/json
+      description: REST API Operation Section
+      parameters:
+      - description: operation_section_id
+        in: path
+        name: operation_section_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get Operation Section By ID
+      tags:
+      - Operation Section
+    patch:
+      consumes:
+      - application/json
+      description: REST API Operation Section
+      parameters:
+      - description: operation_section_id
+        in: path
+        name: operation_section_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Change Status Operation Section
+      tags:
+      - Operation Section
+  /api/master/operation-section/section-description:
+    get:
+      consumes:
+      - application/json
+      description: REST API Operation Section
+      parameters:
+      - description: operation_section_code
+        in: query
+        name: operation_section_code
+        required: true
+        type: string
+      - description: operation_group_code
+        in: query
+        name: operation_group_code
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get Operation Section Name
+      tags:
+      - Operation Section
+  /api/transaction/supply-slip/{supply_system_number}:
+    get:
+      consumes:
+      - application/json
+      description: REST API Supply Slip
+      parameters:
+      - description: supply_system_number
+        in: path
+        name: supply_system_number
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Get Supply Slip By ID
+      tags:
+      - Supply Slip
+  /master/save-booking-estimation:
+    post:
+      consumes:
+      - application/json
+      description: Save Booking Estimation
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/masterpayloads.SaveBookingEstimationRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      security:
+      - BearerAuth: []
+      summary: Save Booking Estimation
+      tags:
+      - 'Master : Booking Estimation'
+swagger: "2.0"

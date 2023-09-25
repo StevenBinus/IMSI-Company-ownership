@@ -1,0 +1,725 @@
+basePath: /api
+definitions:
+  entities.OTPInput:
+    properties:
+      client:
+        type: string
+      token:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  exceptions.Error:
+    properties:
+      Data: {}
+      Message:
+        type: string
+      Success:
+        type: boolean
+    type: object
+  payloads.CreateRequest:
+    properties:
+      email:
+        type: string
+      is_active:
+        type: boolean
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  payloads.ForgotPasswordInput:
+    properties:
+      email:
+        type: string
+    required:
+    - email
+    type: object
+  payloads.LoginRequest:
+    properties:
+      client:
+        type: string
+      password:
+        type: string
+      username:
+        type: string
+    type: object
+  payloads.ResetPasswordInput:
+    properties:
+      password:
+        type: string
+      password_confirm:
+        type: string
+    required:
+    - password
+    - password_confirm
+    type: object
+  payloads.Respons:
+    properties:
+      Data: {}
+      Message:
+        type: string
+      Success:
+        type: boolean
+    type: object
+host: localhost:3000
+info:
+  contact:
+    email: indomobil01@gmail.com
+    name: Indomobil
+    url: https://github.com/Indomobil-Sukses-Internasional-Tbk
+  description: DMS User Service Architecture
+  license:
+    name: MIT
+    url: https://github.com/Indomobil-Sukses-Internasional-Tbk/-/blob/main/LICENSE
+  termsOfService: http://swagger.io/terms/
+  title: DMS User Service
+  version: "1.0"
+paths:
+  /admin/user/delete-user/{user_id}:
+    post:
+      consumes:
+      - application/json
+      description: REST API User
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Respons'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      security:
+      - BearerAuth: []
+      summary: Delete User
+      tags:
+      - Admin Controller
+  /admin/user/find-by-username/{username}:
+    get:
+      consumes:
+      - application/json
+      description: REST API User
+      parameters:
+      - description: Username
+        in: path
+        name: username
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Respons'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      security:
+      - BearerAuth: []
+      summary: Find User
+      tags:
+      - Admin Controller
+  /admin/user/register-admin:
+    post:
+      consumes:
+      - application/json
+      description: REST API User
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/payloads.CreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Respons'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      security:
+      - BearerAuth: []
+      summary: Register User Admin
+      tags:
+      - Admin Controller
+  /admin/user/update-user/{user_id}:
+    post:
+      consumes:
+      - application/json
+      description: REST API User
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: string
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/payloads.CreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Respons'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      security:
+      - BearerAuth: []
+      summary: Update User
+      tags:
+      - Admin Controller
+  /admin/user/view-all-user:
+    get:
+      consumes:
+      - application/json
+      description: REST API User
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Respons'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      security:
+      - BearerAuth: []
+      summary: View All User
+      tags:
+      - Admin Controller
+  /auth/forgot-password:
+    post:
+      consumes:
+      - application/json
+      description: REST API Password User
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/payloads.ForgotPasswordInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Respons'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Forgot Password User
+      tags:
+      - Auth Controller
+  /auth/generate:
+    post:
+      consumes:
+      - application/json
+      description: REST API OTP User
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Respons'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Generate OTP User
+      tags:
+      - Auth Controller
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      description: REST API User
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/payloads.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Respons'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Login User
+      tags:
+      - Auth Controller
+  /auth/logout:
+    post:
+      consumes:
+      - application/json
+      description: REST API Logout User
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Respons'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Logout User
+      tags:
+      - Auth Controller
+  /auth/register:
+    post:
+      consumes:
+      - application/json
+      description: REST API User
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/payloads.CreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Respons'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Register User
+      tags:
+      - Auth Controller
+  /auth/reset-password/{reset_token}:
+    patch:
+      consumes:
+      - application/json
+      description: REST API Password User
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/payloads.ResetPasswordInput'
+      - description: Reset Token
+        in: path
+        name: reset_token
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Respons'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Forgot Password User
+      tags:
+      - Auth Controller
+  /auth/verify:
+    post:
+      consumes:
+      - application/json
+      description: REST API Verify OTP User
+      parameters:
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/entities.OTPInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Respons'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Verify OTP User
+      tags:
+      - Auth Controller
+  /user/find-me:
+    get:
+      consumes:
+      - application/json
+      description: REST API User
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Respons'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      security:
+      - BearerAuth: []
+      summary: Find Me
+      tags:
+      - User Controller
+  /user/update-user:
+    post:
+      consumes:
+      - application/json
+      description: REST API User
+      parameters:
+      - description: User ID
+        in: path
+        name: user_id
+        required: true
+        type: string
+      - description: Form Request
+        in: body
+        name: reqBody
+        required: true
+        schema:
+          $ref: '#/definitions/payloads.CreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/payloads.Respons'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "422":
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/exceptions.Error'
+      summary: Update User
+      tags:
+      - User Controller
+securityDefinitions:
+  BearerAuth:
+    in: Header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
